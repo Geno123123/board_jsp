@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>HelloWorld</title>
+<title>JSP 게시판 웹사이트</title>
 </head>
 <body>
-	helloWo
+	<script>
+		location.herf='login.jsp' //해당 페이지로 이동
+	</script>
 </body>
 </html>
