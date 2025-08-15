@@ -14,10 +14,24 @@
 </head>
 <body>
 	<%
+	String userID=null;
+	if(session.getAttribute("userID")!=null){ //세션에 userID로 저장된 것이 없으면
+		userID=(String)session.getAttribute("userID");
+	}
+	if(userID !=null){
+    	session.setAttribute("userID", user.getUserID());
+        out.println("<script>");
+        out.println("alert('이미 로그인이 되어있습니다.');");
+        out.println("location.href='main.jsp';"); //메인으로 돌림
+        out.println("</script>");
+    }
+	
+	
     UserDAO userDAO = new UserDAO();
     int result = userDAO.login(user.getUserID(), user.getUserPassword());
 
     if(result == 1){
+    	session.setAttribute("userID", user.getUserID());
         out.println("<script>");
         out.println("alert('로그인 성공');");
         out.println("location.href='main.jsp';"); // 로그인 성공 후 이동
